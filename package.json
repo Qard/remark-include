@@ -1,0 +1,34 @@
+{
+  "name": "remark-include",
+  "version": "1.0.0",
+  "description": "Transform @include statements to contents",
+  "main": "index.js",
+  "author": "Stephen Belanger <admin@stephenbelanger.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Qard/remark-include#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qard/remark-include.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Qard/remark-include/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "remark",
+    "include",
+    "markdown"
+  ],
+  "scripts": {
+    "test": "tap test.js"
+  },
+  "devDependencies": {
+    "remark": "^3.2.1",
+    "tap": "^5.1.1"
+  },
+  "dependencies": {
+    "vfile": "^1.2.0"
+  }
+}
