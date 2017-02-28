@@ -1,6 +1,6 @@
 {
   "name": "remark-include",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Transform @include statements to contents",
   "main": "index.js",
   "author": "Stephen Belanger <admin@stephenbelanger.com>",
