@@ -15,7 +15,7 @@ npm install remark-include
 var remark = require('remark')
 var include = require('remark-include')
 
-remark.use(include).process('@include first.md\n@include second.md')
+remark().use(include).processSync('@include first.md\n@include second.md').toString()
 ```
 
 ## NOTE

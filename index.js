@@ -4,11 +4,12 @@ var fs = require('fs')
 
 var parseInclude = /^@include (.*)(\n|$)/
 
-module.exports = function (processor, options) {
+module.exports = function (options) {
+  var proc = this;
   options = options || {}
   var cwd = options.cwd || process.cwd()
 
-  var prt = processor.Parser.prototype
+  var prt = proc.Parser.prototype
   prt.blockTokenizers.include = tokenizer
   prt.blockMethods.unshift('include')
 
@@ -20,12 +21,12 @@ module.exports = function (processor, options) {
       if (child.type === 'include') {
         // Load file and create VFile
         // console.log(cwd, file)
-        // var file = toFile(path.join(file.directory || cwd, child.value))
+        // var file = toFile(path.join(file.dirname || cwd, child.value))
 
         // Parse vfile contents
         // var parser = new processor.Parser(file, null, processor)
-        var root = processor.run(processor.parse(
-          toFile(path.join(child.source.directory || cwd, child.value))
+        var root = proc.runSync(proc.parse(
+          toFile(path.join(child.source.dirname || cwd, child.value))
         ))
 
         // Split and merge the head and tail around the new children
@@ -70,17 +71,7 @@ function tokenizer (eat, value, silent) {
 }
 
 function toFile(full) {
-  var dir = path.dirname(full)
-  var ext = path.extname(full)
-  var name = path.basename(full, ext)
-  var file = new VFile({
-    directory: dir,
-    filename: name,
-    extension: ext.slice(1),
-    contents: loadContent(full).toString('utf8')
-  })
-  // console.log(full, file)
-  return file
+  return new VFile({path: full, contents: loadContent(full).toString('utf8')})
 }
 
 function loadContent(file) {
