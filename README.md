@@ -1,5 +1,7 @@
 # remark-include
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Qard/remark-include.svg)](https://greenkeeper.io/)
+
 With remark-include, you can use @include statements to compose markdown
 files together.
 
